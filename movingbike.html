@@ -1,0 +1,79 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    
+    </style>
+</head>
+<script>
+    x=0
+    function move()
+    {
+        document.getElementById("bike").style.left=x;
+        x+=40;
+    }
+    function start()
+    {
+    z=setInterval("move()",110);
+    }
+
+    function stop()
+    {
+        clearInterval(z);
+        clearInterval(y);
+    }
+
+    function restart()
+    {
+        x=0;
+        start();
+    }
+
+    function dec()
+    {
+       y= setInterval("slow()",110);
+    }
+
+    function slow()
+    {
+        clearInterval(z);
+        document.getElementById("bike").style.left=x;
+        x+=10; 
+    }
+</script>
+<style>
+    .m div
+    {
+        width:100%;
+        height:70%;
+    }
+
+    img
+    {
+        height:400px;
+        width:600px;
+        position:relative;
+    }
+
+    .n div
+    {
+        width:100%;
+        height:10%;
+    }
+</style>
+
+<body>
+    <div  class="m">
+    <img src="bike.jpg" id="bike">
+    </div>
+    <div class="n">
+    <button onclick="start()">START</button>
+    <button onclick="stop()">STOP</button>
+    <button onclick="restart()">RESTART</button>
+    <button onclick="dec()">DECREASE SPEED</button>
+    <div>
+</body>
+</html>
