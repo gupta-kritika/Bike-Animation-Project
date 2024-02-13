@@ -9,14 +9,28 @@
     </style>
 </head>
 <script>
-    x=0
+    x=0;
+
     function move()
     {
         document.getElementById("bike").style.left=x;
-        x+=40;
+        if(movingfwd)
+        {
+            x+=40;
+        }
+        else
+        {
+            if(x<=0)
+           {
+            stop();
+           }
+           else
+           x-=40;
+        }
     }
     function start()
     {
+    movingfwd=true;
     z=setInterval("move()",110);
     }
 
@@ -24,6 +38,7 @@
     {
         clearInterval(z);
         clearInterval(y);
+        clearInterval(r);
     }
 
     function restart()
@@ -43,6 +58,27 @@
         document.getElementById("bike").style.left=x;
         x+=10; 
     }
+
+
+    function rev()
+        {
+          clearInterval(z);
+          movingfwd=!movingfwd;
+          r=setInterval(move,110);
+        }
+    
+    function inc()
+    {
+        i=setInterval(fast,110);
+    }
+
+    function fast()
+    {
+        clearInterval(z);
+        document.getElementById("bike").style.left=x;
+        x+=60;  
+    }
+        
 </script>
 <style>
     .m div
@@ -70,10 +106,12 @@
     <img src="bike.jpg" id="bike">
     </div>
     <div class="n">
-    <button onclick="start()">START</button>
+    <button onclick="start()">FORWARD</button>
+    <button onclick="rev()">REVERSE</button>  
     <button onclick="stop()">STOP</button>
     <button onclick="restart()">RESTART</button>
     <button onclick="dec()">DECREASE SPEED</button>
+    <button onclick="inc()">INCREASE SPEED</button>
     <div>
 </body>
 </html>
